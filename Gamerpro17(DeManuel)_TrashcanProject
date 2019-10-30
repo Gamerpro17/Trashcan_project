@@ -1,25 +1,65 @@
 # Main driver
 def main():
+  #Variables
+  Quit = False;
+  Choice = 0;
+  inputSize = 0;
+  inputContentSize = 0;
+
   #Create object from Trash class
-  bin1 = Trash(10,10);
-  kass = Trash(20,20);
-  bin1.checkContents();
+  inputSize = int(input("What is the size of your trashcan: "))
+  inputContentSize = int(input("How many stuff is in your trashcan: "))
+
+  trashbin = Trash(inputSize, inputContentSize);
+
+  trashbin.Menu();
+
+  while (Quit == False):
+  
+    Choice = int(input("Select your choice:"))
+    if (Choice == 1):
+      trashbin.throwIn();
+    elif (Choice == 2):
+      trashbin.getOut();
+    elif (Choice == 3):
+      trashbin.checkContents();
+    elif (Choice == 4):
+      Quit = True;
+    else:
+      print("ERROR")
+  print("Program is done!")
+
+
+
 
 class Trash:
+  #size is the max volume of container
+  #stuffInside is a int value of amount of objects in container
   def __init__(self, size, stuffInside):
     self.stuffInside = stuffInside;
     self.size = size;
   
+  def Menu(self):
+    print("Menu:")
+    print("1. Throw contents in")
+    print("2. Get contents out")
+    print("3. Check contents")
+    print("4. Quit")
+
   def throwIn(self):
-    self.stuffInside = self.stuffInside + 1;
-    print("I throw in stuff");
+    if (self.stuffInside >= self.checkSize):
+      print("I can't throw in more stuff, trashcan is full");
+    else:
+      self.stuffInside = self.stuffInside + 1;
+      print("I throw in stuff");
 
   def getOut(self):
     print("I get out stuff");
 
   def checkContents(self):
     print("I check stuff");
-    if (self.stuffInside == self.size):
+    print(self.stuffInside);
+    if (self.stuffInside >= self.size):
       print("This boy is full");
     else:
       print("Not full mate"); 
