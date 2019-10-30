@@ -1,0 +1,29 @@
+# Main driver
+def main():
+  #Create object from Trash class
+  bin1 = Trash(10,10);
+  kass = Trash(20,20);
+  bin1.checkContents();
+
+class Trash:
+  def __init__(self, size, stuffInside):
+    self.stuffInside = stuffInside;
+    self.size = size;
+  
+  def throwIn(self):
+    self.stuffInside = self.stuffInside + 1;
+    print("I throw in stuff");
+
+  def getOut(self):
+    print("I get out stuff");
+
+  def checkContents(self):
+    print("I check stuff");
+    if (self.stuffInside == self.size):
+      print("This boy is full");
+    else:
+      print("Not full mate"); 
+  def checkSize(self):
+    print("I check item size");
+
+main();
